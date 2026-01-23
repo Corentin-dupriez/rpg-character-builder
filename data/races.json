@@ -1,0 +1,65 @@
+
+{
+  "races": [
+    {
+      "name": "Human",
+      "weight": 40,
+      "traits": [
+        "Versatile",
+        "Adaptable",
+        "Ambitious"
+      ],
+      "description": "Humans are the most common and diverse race, known for their ambition and adaptability."
+    },
+    {
+      "name": "Elf",
+      "weight": 20,
+      "traits": [
+        "Keen Senses",
+        "Fey Ancestry",
+        "Trance"
+      ],
+      "description": "Elves are graceful and long-lived, with strong connections to nature and magic."
+    },
+    {
+      "name": "Dwarf",
+      "weight": 15,
+      "traits": [
+        "Darkvision",
+        "Dwarven Resilience",
+        "Stonecunning"
+      ],
+      "description": "Dwarves are hardy and proud, often living in mountains and crafting strong weapons and armor."
+    },
+    {
+      "name": "Halfling",
+      "weight": 12,
+      "traits": [
+        "Lucky",
+        "Brave",
+        "Halfling Nimbleness"
+      ],
+      "description": "Halflings are small and cheerful, with strong luck and quick reflexes."
+    },
+    {
+      "name": "Orc",
+      "weight": 8,
+      "traits": [
+        "Menacing",
+        "Powerful Build",
+        "Aggressive"
+      ],
+      "description": "Orcs are fierce warriors with great strength and a bold presence."
+    },
+    {
+      "name": "Tiefling",
+      "weight": 5,
+      "traits": [
+        "Darkvision",
+        "Hellish Resistance",
+        "Infernal Legacy"
+      ],
+      "description": "Tieflings are born with infernal blood, giving them supernatural abilities and a mysterious aura."
+    }
+  ]
+}

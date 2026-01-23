@@ -1,0 +1,11 @@
+
+{
+  "names": {
+    "Human": ["Aric", "Lena", "Tomas", "Elena", "Marcus"],
+    "Elf": ["Aelar", "Sylvar", "Faelar", "Luthien", "Ithil"],
+    "Dwarf": ["Borin", "Thrain", "Gimli", "Dagna", "Hilda"],
+    "Halfling": ["Pip", "Milo", "Rosie", "Tilda", "Finn"],
+    "Orc": ["Grom", "Urzak", "Mog", "Tharka", "Brug"],
+    "Tiefling": ["Zariel", "Nyx", "Malakai", "Riven", "Ash"]
+  }
+}

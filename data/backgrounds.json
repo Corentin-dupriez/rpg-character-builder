@@ -1,0 +1,35 @@
+
+{
+  "backgrounds": [
+    {
+      "name": "Acolyte",
+      "skills": ["Religion", "Insight"],
+      "description": "You spent your life in service to a temple or religious order."
+    },
+    {
+      "name": "Criminal",
+      "skills": ["Stealth", "Deception"],
+      "description": "You lived outside the law, surviving through cunning and crime."
+    },
+    {
+      "name": "Noble",
+      "skills": ["History", "Persuasion"],
+      "description": "You were born into wealth and privilege."
+    },
+    {
+      "name": "Soldier",
+      "skills": ["Athletics", "Intimidation"],
+      "description": "You trained and fought as part of a military force."
+    },
+    {
+      "name": "Outlander",
+      "skills": ["Survival", "Nature"],
+      "description": "You grew up in the wilds, far from civilization."
+    },
+    {
+      "name": "Scholar",
+      "skills": ["Arcana", "Investigation"],
+      "description": "You devoted your life to study and learning."
+    }
+  ]
+}

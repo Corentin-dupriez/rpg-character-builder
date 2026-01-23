@@ -1,0 +1,47 @@
+
+{
+  "classes": [
+    {
+      "name": "Fighter",
+      "weight": 25,
+      "primary_stat": "Strength",
+      "skills": ["Athletics", "Intimidation", "Survival"],
+      "description": "Masters of martial combat, skilled with weapons and armor."
+    },
+    {
+      "name": "Rogue",
+      "weight": 20,
+      "primary_stat": "Dexterity",
+      "skills": ["Stealth", "Acrobatics", "Deception"],
+      "description": "Skilled in stealth, trickery, and precision strikes."
+    },
+    {
+      "name": "Wizard",
+      "weight": 15,
+      "primary_stat": "Intelligence",
+      "skills": ["Arcana", "History", "Investigation"],
+      "description": "Scholars of the arcane who wield powerful spells."
+    },
+    {
+      "name": "Cleric",
+      "weight": 15,
+      "primary_stat": "Wisdom",
+      "skills": ["Religion", "Insight", "Medicine"],
+      "description": "Divine spellcasters who serve gods and protect allies."
+    },
+    {
+      "name": "Ranger",
+      "weight": 15,
+      "primary_stat": "Dexterity",
+      "skills": ["Survival", "Nature", "Perception"],
+      "description": "Hunters and trackers who thrive in the wild."
+    },
+    {
+      "name": "Bard",
+      "weight": 10,
+      "primary_stat": "Charisma",
+      "skills": ["Performance", "Persuasion", "Deception"],
+      "description": "Performers and storytellers who wield magic through art."
+    }
+  ]
+}
