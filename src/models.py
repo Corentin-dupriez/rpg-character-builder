@@ -37,3 +37,10 @@ class Background(BaseModel):
 
 class BackgroundsData(BaseModel):
     backgrounds: List[Background]
+
+
+class Character(BaseModel):
+    race: str
+    character_class: str
+    skills: List[str]
+    description: str

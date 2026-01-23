@@ -1,7 +1,7 @@
 import os
 import random
 import json
-from models import RaceData
+from models import RaceData, Character
 
 data_folder = os.path.join(
     os.path.abspath(os.path.join(os.getcwd(), os.pardir)), "data"
@@ -15,9 +15,19 @@ def load_races() -> RaceData:
     return RaceData.model_validate(data)
 
 
-races = {race.name: race.weight for race in load_races().races}
+def choose_race() -> str:
+    races = {race.name: race.weight for race in load_races().races}
 
-names = list(races.keys())
-weights = list(races.values())
+    names = list(races.keys())
+    weights = list(races.values())
 
-print(random.choices(names, weights=weights, k=1)[0])
+    return random.choices(names, weights=weights, k=1)[0]
+
+
+def build_character() -> Character:
+    return Character(race=choose_race(), character_class="", skills=[], description="")
+
+
+created_character = build_character()
+
+print(created_character)
