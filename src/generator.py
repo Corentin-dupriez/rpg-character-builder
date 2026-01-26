@@ -1,19 +1,16 @@
-import os
 import random
 import json
 from pathlib import Path
 from typing import Dict
-from models import RaceData, Character, ClassesData, Skills
+from models import RaceData, Character, ClassesData, Skills, Race
 
 BASE_DIR = Path(__file__).resolve().parent.parent
 data_folder = BASE_DIR / "data"
 
 
-def open_file(file_name) -> Dict:
-    with open(os.path.join(data_folder, file_name)) as f:
-        data = json.load(f)
-
-    return data
+def open_file(file_name: str) -> Dict:
+    with open(data_folder / file_name, encoding="utf-8") as f:
+        return json.load(f)
 
 
 def load_races() -> RaceData:
@@ -36,38 +33,44 @@ _CLASSES = load_classes()
 _SKILLS = load_skills()
 
 
-def choose_race() -> str:
-    races = {race.name: race.weight for race in _RACES.races}
-
-    names = list(races.keys())
-    weights = list(races.values())
-
-    return random.choices(names, weights=weights, k=1)[0]
+def choose_race() -> Race:
+    return random.choices(_RACES.races, weights=[r.weight for r in _RACES.races], k=1)[
+        0
+    ]
 
 
-def choose_class() -> str:
-    classes = {class_data.name: class_data.weight for class_data in _CLASSES.classes}
+def choose_class(race: Race) -> str:
+    affinities = race.class_affinities
+    classes = []
+    weights = []
+    for c in _CLASSES.classes:
+        modifier = affinities.get(c.name, 1.0)
+        classes.append(c)
+        weights.append(c.weight * modifier)
 
-    classes_names = list(classes.keys())
-    weights = list(classes.values())
-
-    return random.choices(classes_names, weights=weights, k=1)[0]
+    return random.choices(classes, weights=weights, k=1)[0]
 
 
 def choose_skills() -> list:
-    skills = _SKILLS.skills
-    return random.choices(skills, k=3)
+    return random.sample(_SKILLS.skills, k=3)
 
 
 def build_character() -> Character:
+    race = choose_race()
     return Character(
-        race=choose_race(),
-        character_class=choose_class(),
+        race=race,
+        character_class=choose_class(race),
         skills=choose_skills(),
         description="",
     )
 
 
+def print_character(character: Character) -> None:
+    print(
+        f"Race: {character.race.name}\nClass: {character.character_class.name}\nSkills: {', '.join(character.skills)}"
+    )
+
+
 created_character = build_character()
 
-print(created_character)
+print_character(created_character)

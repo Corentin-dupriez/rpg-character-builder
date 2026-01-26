@@ -6,6 +6,7 @@ class Race(BaseModel):
     name: str
     weight: int = Field(gt=0)
     traits: List[str]
+    class_affinities: dict
     description: str
 
 
@@ -40,7 +41,7 @@ class BackgroundsData(BaseModel):
 
 
 class Character(BaseModel):
-    race: str
-    character_class: str
+    race: Race
+    character_class: ClassInfo
     skills: List[str]
     description: str
