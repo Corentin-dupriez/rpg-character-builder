@@ -1,12 +1,12 @@
 import os
 import random
 import json
+from pathlib import Path
 from typing import Dict
 from models import RaceData, Character, ClassesData, Skills
 
-data_folder = os.path.join(
-    os.path.abspath(os.path.join(os.getcwd(), os.pardir)), "data"
-)
+BASE_DIR = Path(__file__).resolve().parent.parent
+data_folder = BASE_DIR / "data"
 
 
 def open_file(file_name) -> Dict:
@@ -27,11 +27,17 @@ def load_classes() -> ClassesData:
 
 
 def load_skills() -> Skills:
-    pass
+    data = open_file("skills.json")
+    return Skills.model_validate(data)
+
+
+_RACES = load_races()
+_CLASSES = load_classes()
+_SKILLS = load_skills()
 
 
 def choose_race() -> str:
-    races = {race.name: race.weight for race in load_races().races}
+    races = {race.name: race.weight for race in _RACES.races}
 
     names = list(races.keys())
     weights = list(races.values())
@@ -40,9 +46,7 @@ def choose_race() -> str:
 
 
 def choose_class() -> str:
-    classes = {
-        class_data.name: class_data.weight for class_data in load_classes().classes
-    }
+    classes = {class_data.name: class_data.weight for class_data in _CLASSES.classes}
 
     classes_names = list(classes.keys())
     weights = list(classes.values())
@@ -50,9 +54,17 @@ def choose_class() -> str:
     return random.choices(classes_names, weights=weights, k=1)[0]
 
 
+def choose_skills() -> list:
+    skills = _SKILLS.skills
+    return random.choices(skills, k=3)
+
+
 def build_character() -> Character:
     return Character(
-        race=choose_race(), character_class=choose_class(), skills=[], description=""
+        race=choose_race(),
+        character_class=choose_class(),
+        skills=choose_skills(),
+        description="",
     )
 
 
