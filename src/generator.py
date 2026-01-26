@@ -2,7 +2,16 @@ import random
 import json
 from pathlib import Path
 from typing import Dict
-from models import RaceData, Character, ClassesData, Skills, Race
+from models import (
+    RaceData,
+    Character,
+    ClassesData,
+    Skills,
+    Race,
+    ClassInfo,
+    BackgroundsData,
+    Background,
+)
 
 BASE_DIR = Path(__file__).resolve().parent.parent
 data_folder = BASE_DIR / "data"
@@ -28,9 +37,15 @@ def load_skills() -> Skills:
     return Skills.model_validate(data)
 
 
+def load_backgrounds() -> BackgroundsData:
+    data = open_file("backgrounds.json")
+    return BackgroundsData.model_validate(data)
+
+
 _RACES = load_races()
 _CLASSES = load_classes()
 _SKILLS = load_skills()
+_BACKGROUNDS = load_backgrounds()
 
 
 def choose_race() -> Race:
@@ -39,7 +54,7 @@ def choose_race() -> Race:
     ]
 
 
-def choose_class(race: Race) -> str:
+def choose_class(race: Race) -> ClassInfo:
     affinities = race.class_affinities
     classes = []
     weights = []
@@ -51,23 +66,60 @@ def choose_class(race: Race) -> str:
     return random.choices(classes, weights=weights, k=1)[0]
 
 
-def choose_skills() -> list:
-    return random.sample(_SKILLS.skills, k=3)
+def weighted_samples(items: list, weights: list, k: int) -> list:
+    if k > len(items):
+        raise ValueError("k cannot be larger than the population")
+
+    items = items.copy()
+    weights = weights.copy()
+    chosen = []
+
+    for _ in range(k):
+        choice = random.choices(items, weights=weights, k=1)[0]
+        idx = items.index(choice)
+        items.pop(idx)
+        weights.pop(idx)
+        chosen.append(choice)
+
+    return chosen
+
+
+def choose_skills(race: Race, class_info: ClassInfo) -> list:
+    skills_affinities = race.skills_affinities
+    class_skills_affinities = class_info.skills
+    weights = []
+    for s in _SKILLS.skills:
+        modifier = skills_affinities.get(s, 1.0) * class_skills_affinities.get(s, 1.0)
+        weights.append(modifier)
+
+    return weighted_samples(_SKILLS.skills, weights, 3)
+
+
+def choose_background(class_info: ClassInfo) -> Background:
+    weigths = []
+
+    for b in _BACKGROUNDS.backgrounds:
+        weigths.append(b.weight * b.class_affinities.get(class_info.name, 1.0))
+
+    return random.choices(_BACKGROUNDS.backgrounds, weights=weigths, k=1)[0]
 
 
 def build_character() -> Character:
     race = choose_race()
+    character_class = choose_class(race)
+    background = choose_background(character_class)
     return Character(
         race=race,
-        character_class=choose_class(race),
-        skills=choose_skills(),
+        character_class=character_class,
+        skills=choose_skills(race, character_class),
+        background=background,
         description="",
     )
 
 
 def print_character(character: Character) -> None:
     print(
-        f"Race: {character.race.name}\nClass: {character.character_class.name}\nSkills: {', '.join(character.skills)}"
+        f"Race: {character.race.name}\nClass: {character.character_class.name}\nSkills: {', '.join(character.skills)}\nBackground: {character.background.name}"
     )
 
 

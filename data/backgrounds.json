@@ -2,34 +2,64 @@
 {
   "backgrounds": [
     {
-      "name": "Acolyte",
-      "skills": ["Religion", "Insight"],
-      "description": "You spent your life in service to a temple or religious order."
+      "name": "Noble",
+      "weight": 1.0,
+      "class_affinities": { "Paladin": 1.4, "Bard": 1.3 },
+      "skill_affinities": { "Persuasion": 1.5, "History": 1.3 },
+      "personality_traits": ["Confident", "Refined", "Idealistic"],
+      "flaws": ["Arrogant", "Sheltered"],
+      "motivations": ["Restore family honor", "Escape court politics"],
+      "notable_events": ["Disgraced by a rival house"]
     },
     {
       "name": "Criminal",
-      "skills": ["Stealth", "Deception"],
-      "description": "You lived outside the law, surviving through cunning and crime."
-    },
-    {
-      "name": "Noble",
-      "skills": ["History", "Persuasion"],
-      "description": "You were born into wealth and privilege."
-    },
-    {
-      "name": "Soldier",
-      "skills": ["Athletics", "Intimidation"],
-      "description": "You trained and fought as part of a military force."
+      "weight": 1.1,
+      "class_affinities": { "Rogue": 1.6, "Bard": 1.2 },
+      "skill_affinities": { "Stealth": 1.5, "Deception": 1.4 },
+      "personality_traits": ["Cautious", "Street-smart", "Pragmatic"],
+      "flaws": ["Paranoid", "Greedy"],
+      "motivations": ["Clear a debt", "Escape past crimes"],
+      "notable_events": ["Betrayed by a partner"]
     },
     {
       "name": "Outlander",
-      "skills": ["Survival", "Nature"],
-      "description": "You grew up in the wilds, far from civilization."
+      "weight": 1.0,
+      "class_affinities": { "Ranger": 1.5, "Barbarian": 1.3 },
+      "skill_affinities": { "Survival": 1.6, "Nature": 1.4 },
+      "personality_traits": ["Independent", "Observant"],
+      "flaws": ["Socially awkward", "Distrustful"],
+      "motivations": ["Protect homeland", "Explore the world"],
+      "notable_events": ["Saved a village from beasts"]
+    },
+    {
+      "name": "Acolyte",
+      "weight": 0.9,
+      "class_affinities": { "Cleric": 1.6, "Paladin": 1.3 },
+      "skill_affinities": { "Religion": 1.6, "Insight": 1.3 },
+      "personality_traits": ["Calm", "Devout"],
+      "flaws": ["Dogmatic", "Gullible"],
+      "motivations": ["Serve a higher power", "Question faith"],
+      "notable_events": ["Received a troubling vision"]
     },
     {
       "name": "Scholar",
-      "skills": ["Arcana", "Investigation"],
-      "description": "You devoted your life to study and learning."
+      "weight": 0.8,
+      "class_affinities": { "Wizard": 1.6, "Bard": 1.2 },
+      "skill_affinities": { "Arcana": 1.6, "History": 1.4 },
+      "personality_traits": ["Curious", "Methodical"],
+      "flaws": ["Absent-minded", "Physically weak"],
+      "motivations": ["Uncover forbidden knowledge"],
+      "notable_events": ["Discovered a dangerous tome"]
+    },
+    {
+      "name": "Soldier",
+      "weight": 1.0,
+      "class_affinities": { "Fighter": 1.6, "Paladin": 1.2 },
+      "skill_affinities": { "Athletics": 1.5, "Intimidation": 1.3 },
+      "personality_traits": ["Disciplined", "Loyal"],
+      "flaws": ["Rigid", "Haunted by war"],
+      "motivations": ["Protect comrades", "Find peace"],
+      "notable_events": ["Survived a lost battle"]
     }
   ]
 }

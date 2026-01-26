@@ -7,6 +7,7 @@ class Race(BaseModel):
     weight: int = Field(gt=0)
     traits: List[str]
     class_affinities: dict
+    skills_affinities: dict
     description: str
 
 
@@ -18,7 +19,7 @@ class ClassInfo(BaseModel):
     name: str
     weight: int = Field(gt=0)
     primary_stat: str
-    skills: List[str]
+    skills: dict
     description: str
 
 
@@ -32,8 +33,14 @@ class Skills(BaseModel):
 
 class Background(BaseModel):
     name: str
-    skills: List[str]
-    description: str
+    personality_traits: list[str]
+    weight: float
+    class_affinities: dict
+    skill_affinities: dict
+    personality_traits: list[str]
+    flaws: list[str]
+    motivations: list[str]
+    notable_events: list[str]
 
 
 class BackgroundsData(BaseModel):
@@ -44,4 +51,5 @@ class Character(BaseModel):
     race: Race
     character_class: ClassInfo
     skills: List[str]
+    background: Background
     description: str
