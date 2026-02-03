@@ -123,6 +123,7 @@ def print_character(character: Character) -> None:
     )
 
 
-created_character = build_character()
+if __name__ == "__main__":
+    created_character = build_character()
 
-print_character(created_character)
+    print_character(created_character)
