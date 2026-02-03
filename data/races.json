@@ -135,7 +135,6 @@
       "name": "Tiefling",
       "weight": 5,
       "class_affinities": {
-        "Warlock": 1.6,
         "Wizard": 1.2,
         "Rogue": 1.1,
         "Bard": 1.2,

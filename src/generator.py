@@ -104,16 +104,20 @@ def choose_background(class_info: ClassInfo) -> Background:
     return random.choices(_BACKGROUNDS.backgrounds, weights=weigths, k=1)[0]
 
 
-def build_character() -> Character:
+def build_character(generate_description: bool = False) -> Character:
     race = choose_race()
     character_class = choose_class(race)
     background = choose_background(character_class)
+    if generate_description:
+        description = "hello"
+    else:
+        description = ""
     return Character(
         race=race,
         character_class=character_class,
         skills=choose_skills(race, character_class),
         background=background,
-        description="",
+        description=description,
     )
 
 
